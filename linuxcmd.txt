@@ -1,5 +1,5 @@
 First Command
--------
+-------------------------------------
 > CTRL + T (To open Terminal)
 > echo shiva
 > cal
@@ -27,6 +27,24 @@ First Command
    date   --option1  --option2  --option3 (Can't chain like short form)
 >  cal -A 1 12 2017 (A and B are options and have their own input 1) 12 and 2017 are input
 >  cal -B 1 12 2017 (A and B are options and have their own input 1) 12 and 2017 are input
+>  man -k vmstat (vmstat is search term)
+>  man 8 vmstat
+>  which [-a | -f] <something> (| means select one from the two optopns)
+   ---which -af whis is wrong
+
+Command Input + Output
+----------------------------------
+> standard Input(0) Data stream
+> Srandard Output(1) Data stream
+> Srandard Error(2) Data stream
+> Command Arguments
+
+> We can connect two data stream from ouput of one command to input of another command known as piping 
+
+
+
+
+
 
    
 
