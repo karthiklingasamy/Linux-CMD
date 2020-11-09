@@ -1,1 +1,33 @@
-echo shiva
+First Command
+-------
+> CTRL + T (To open Terminal)
+> echo shiva
+> cal
+> cal 2020
+> cal -y
+> date
+> clear
+> CTRL + l
+> history
+> !07
+> !116
+> !! (to run recent cmd)
+> history -c
+> exit or CTRL + D (To close the terminal)
+> command,terminal and shell
+> Different type of shell (bhash)
+> echo $PATH (To see shel path)
+> shblam (Command not found) 
+> which date (date command is actually located /usr/bin/date) that why the cmd is executed
+> which echo (/usr/bin/echo)
+> which which (/usr/bin/which)
+> command option input
+   date   -a -b -c -d -e -f (Order does not matter)
+   date   -abcdef           (Order does not matter)
+   date   --option1  --option2  --option3 (Can't chain like short form)
+>  cal -A 1 12 2017 (A and B are options and have their own input 1) 12 and 2017 are input
+>  cal -B 1 12 2017 (A and B are options and have their own input 1) 12 and 2017 are input
+
+   
+
+
