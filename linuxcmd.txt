@@ -38,8 +38,33 @@ Command Input + Output
 > Srandard Output(1) Data stream
 > Srandard Error(2) Data stream
 > Command Arguments
-
 > We can connect two data stream from ouput of one command to input of another command known as piping 
+
+Redirection statndard Output
+---------------------------------
+>cat 1> output.txt  (overwrite the file)
+>cat 1>> output.txt (append to the file)
+>cat > output.txt   (other syntaxt)
+>cat >> output.txt   (other syntaxt)
+
+Redirection statndard Error
+---------------------------------
+>cat 2> error.txt
+>cat 2>>error.txt
+>cat -k bla 2>>error.txt
+>cat 1>> output.txt 2>error.txt
+>cat >> output.txt 2>error.txt (Other syntax you can remove 1 but still you need to mention 2 for standard error)
+>cat 0< input.txt 1> hello.txt
+Piping
+-------------------------------
+
+
+
+
+
+
+
+
 
 
 
