@@ -55,8 +55,112 @@ Redirection statndard Error
 >cat 1>> output.txt 2>error.txt
 >cat >> output.txt 2>error.txt (Other syntax you can remove 1 but still you need to mention 2 for standard error)
 >cat 0< input.txt 1> hello.txt
-Piping
+Piping Part 1
 -------------------------------
+>cut date.txt  --delimiter " " --field 1
+>cut date.txt  --delimiter=" " --field=1 (We can also use = )
+>cut date.txt  --delimiter " " --field 1,2
+>cut date.txt  --delimiter "U" --field 1 -s
+>vmstat | cut  --delimiter " " --field 1,2,3,4,5,6>vmstat.txt
+>date |cut --delimiter " " --fields 1 | command -option args |
+> date > date.txt |cut --delimiter "" --field 1 
+(Note: Here the redirection happend first so you can not pipe the output of date command to cut 
+so the data can not go to two places at once. How to fix? Need to use "tee" command )
+Piping Part 2
+-------------------------------
+>date|tee fullday.txt|cut --delimiter=" " --field=1
+>date|tee fullday.txt|cut --delimiter=" " --field=1 1>today.txt
+>vmstat 1 3|tee vmstat.txt| cut --delimiter=" " --field=1,2 1>process.txt 
+ Key Point:
+  1. Once you redirect the pipeline you can not continue
+  2. If you want to continue the pipline use "tee" command
+
+Piping Part 3 Using xargs
+-----------------------------------
+Part 1>>>>> Piping is all about connection the standard out of one command 
+	    to standard input of another command 
+Part 2>>>>> How you can pass data through your pipeline but also take snapshot 
+	    of the data as it flows through and save that snapshot into a file using "tee' command
+Part 3>>>>> Piping is all about connection the standard out of one command to standard input
+	    of another command . No all command accept standard input some only accepts command line arguments.
+            And to handle this scenario "xargs" comes in. The "xargs" allows you to convert the pipes data into 
+	    command line arguments for the commands that only accept arguments. So that you can 
+            keep your pipe going withou breaking 
+            
+	    xargs - will conver the data from standard input into command line argument
+
+>date |xargs echo
+>date |xargs echo "hello"
+>date |cut --delimiter=" " --field=1|xargs echo
+>cat deletelist.txt |xargs rm
+
+Aliases
+-----------------------------------
+To be updated once reach home and using the laptop
+
+
+Linux File System
+----------------------------------------
+1. Everything in linux start from root
+2. No harddisk partision
+
+Navigating File System part 1
+------------------------------------------
+> pwd
+> ~  (Represent the current user home directory)
+> ls (list directory content. 
+      Note: ls cant accept standard input so you can't pipe it. In "ls" everything is command line arguments
+
+> ls /home/karthik
+> ls ~
+> ks -F (different between files and folder/ )
+> ls -F>list.txt
+> ls -l (long form format)
+> ls -lh (human readable form about file size)
+> ls -la (x-ray --show all file in the file directory including the hidden file)
+
+Navigating File System part 2
+------------------------------------------
+> cd /home/ziyad/downloads
+> cd ~/downloads
+> cd ~/Desktop
+> cd (This will take you to the home directory no matter whereever your are in the file system)
+> cd . (refer the current folder)
+> cd .. (go back to one level up to the parant folder)
+> cd /  (This will take you to the base/root directory no matter whereever you are in the file system)
+
+Navigating File System part 3
+------------------------------------------
+1. Learn aout Tab and double Tab to auto completion
+2. Go to the path using GUI and right-click and click open in terminal
+
+File Extensions in Linux
+--------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 
