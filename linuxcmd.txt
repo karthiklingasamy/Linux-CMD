@@ -118,6 +118,9 @@ Navigating File System part 1
 > ls -l (long form format)
 > ls -lh (human readable form about file size)
 > ls -la (x-ray --show all file in the file directory including the hidden file)
+> ls /etc /home /bin  (It list file from etc home bin directory in one go. But better use wild card )
+> ls >out.txt 
+> ls {jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec}_{2017..2022}>out.txt
 
 Navigating File System part 2
 ------------------------------------------
@@ -136,6 +139,99 @@ Navigating File System part 3
 
 File Extensions in Linux
 --------------------------------------------
+1. In Linux file extension don't matter. Unlike windows, Linux does't determine file type using the file extension.
+   But instead linux read a piece of code inside at the top of the file. And that piece of code is known as header.
+   An it serves as label for linux to read. Linux read that label and it knows the file type. So just change the file extension 
+   dont change that header.
+
+   Note: The programms that are installed on top of the operating system PDF viewer or Libra Office and stuff like that they need file to have 
+         specific extension inorder to open them. But operating system itself does not care. 
+
+[xxxxxxxxx]# file rms-logs_5thOct.txt
+rms-logs_5thOct.txt: UTF-8 Unicode text
+[xxxxxxxxx]# file uams_namespace_def.yml
+uams_namespace_def.yml: ASCII text
+[xxxxxxxxx]# file poi.json
+poi.json: empty
+[xxxxxxxxxx]# file nugetv3_workaround.sh
+nugetv3_workaround.sh: Bourne-Again shell script, ASCII text executable
+
+Wildcards 
+------------------------------------------
+1. * match anything regardless of length
+2. ? match anything but the length is one
+3. [] restict what has to go inside. ls file[1234567890].txt
+4. [0-9][a-z][A-Z]
+
+
+> ls /etc /home /bin 
+> ls * (Very powerfull command to see all the files in root to get quick over about the system)
+> ls *.txt
+> ls file?.txt
+> ls file[1234567890].txt
+> ls file[0-9][A-z][a-z].txt
+> ls file[0-9ABC].txt
+> ls file[0-9abc].txt
+
+Creating Files and Directories Part 1
+--------------------------------------
+> touch file1
+> touch ~/Document/distantfile
+> echo "Hello" > hello.txt
+
+
+> mkdir newfolder
+> mkdir ~/Pictires/Holiday
+
+> mkdir -p bla/thing/shiblam (P option will create the entire path)
+> madir happy birthday (Dont use space in naming folder and file instead use "_" )
+
+Creating Files and Directories Part 2 (Power of braces {})
+--------------------------------------
+> mkdir {jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec}_{2017,2018,2019,2020,2021,2022}
+> mkdir {jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec}_{2017..2022}
+> touch {jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec}_{2017..2022}/file{1..100}
+
+> mkdir -p delfolder/deleteme{1,2,3} 
+> touch delfolder/deleteme{1,2,3}/file{1,2,3}
+
+> This slide needs to be revisited to create file inside the folder
+> ls {jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec}_{2017..2022}>out.txt
+> ls >out.txt
+> touch file{A,B,C}.txt
+> touch file{A..C}.txt
+> touch file{1..100}.txt
+
+Deleting Files and Folders (Part 1)
+-----------------------------------
+> rm deleteme
+> rm Documents/deleteme
+> rm file1.txt Document/file2.txt /Download/file3.txt
+
+> rm *.txt
+> rm file*
+> rm *2*
+> rm *.jpg
+> rm *[2,3]*
+
+Deleting Files and Folders (Part 2)
+-----------------------------------
+> rm -r Deletefolder
+> mkdir delfolder/delitem{1,2,3}
+> rm -ri deletefolder
+> rmdir (remove all empty folder)
+> rmdir delfolder/* (remove everything in delfolder which is empty. so folder 1 & 2 stay and folder 3 will be removed)
+
+Copy and Past File
+------------------------------------
+
+
+
+
+
+
+
+
 
 
 
