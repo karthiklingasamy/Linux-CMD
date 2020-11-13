@@ -224,48 +224,51 @@ Deleting Files and Folders (Part 2)
 
 Copy and Past File
 ------------------------------------
+>cp file1.txt file2.txt
+>cp file1.txt file2.txt destination/
+>cp destination/* .
+>cp -r copymefolder/ destination (Copy and Past the folde to destination)
+
+Moving and Renaming files and Directoties
+-----------------------------------------
+> mv oldfile.txt newfile.txt
+> mv oldefolder/ newfolder
+> mv newfolder/ /home/copyme
+> mv newfilder/ ~/Documents/
+> mv ~/Documents/newfolder ./jackpot (Move the rename folder and also rename the folder as jackpot)
+
+Editing Files usnin nano (Part - 1)
+-----------------------------------
+How to install nano
+> apt-get update
+> apt-get install nano
+> nano dairy.txt
+> ^ symbol means CTRL
+> M symbol means ATL
+
+we see the writeout option
+we see the readfile option
+we see the whereis option
+we see the replace option
+
+Editing Files usnin nano (Part - 2)
+-----------------------------------
+
+setup the spell check in nano
+
+> nano /etc/nanorc
+
+search the below text using wheris option ^W
+#set speller "aspell -x -c"
+
+remove the # symbole and remove the leading space and writeout/save the file
+set speller "aspell -x -c"
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
+                                                                                                                                                                                                                           
 
 
 
