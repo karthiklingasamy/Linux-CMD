@@ -42,35 +42,35 @@ Command Input + Output
 
 Redirection statndard Output
 ---------------------------------
->cat 1> output.txt  (overwrite the file)
->cat 1>> output.txt (append to the file)
->cat > output.txt   (other syntaxt)
->cat >> output.txt   (other syntaxt)
+> cat 1> output.txt  (overwrite the file)
+> cat 1>> output.txt (append to the file)
+> cat > output.txt   (other syntaxt)
+> cat >> output.txt   (other syntaxt)
 
 Redirection statndard Error
 ---------------------------------
->cat 2> error.txt
->cat 2>>error.txt
->cat -k bla 2>>error.txt
->cat 1>> output.txt 2>error.txt
->cat >> output.txt 2>error.txt (Other syntax you can remove 1 but still you need to mention 2 for standard error)
->cat 0< input.txt 1> hello.txt
+> cat 2> error.txt
+> cat 2>>error.txt
+> cat -k bla 2>>error.txt
+> cat 1>> output.txt 2>error.txt
+> cat >> output.txt 2>error.txt (Other syntax you can remove 1 but still you need to mention 2 for standard error)
+> cat 0< input.txt 1> hello.txt
 Piping Part 1
 -------------------------------
->cut date.txt  --delimiter " " --field 1
->cut date.txt  --delimiter=" " --field=1 (We can also use = )
->cut date.txt  --delimiter " " --field 1,2
->cut date.txt  --delimiter "U" --field 1 -s
->vmstat | cut  --delimiter " " --field 1,2,3,4,5,6>vmstat.txt
->date |cut --delimiter " " --fields 1 | command -option args |
+> cut date.txt  --delimiter " " --field 1
+> cut date.txt  --delimiter=" " --field=1 (We can also use = )
+> cut date.txt  --delimiter " " --field 1,2
+> cut date.txt  --delimiter "U" --field 1 -s
+> vmstat | cut  --delimiter " " --field 1,2,3,4,5,6>vmstat.txt
+> date |cut --delimiter " " --fields 1 | command -option args |
 > date > date.txt |cut --delimiter "" --field 1 
 (Note: Here the redirection happend first so you can not pipe the output of date command to cut 
 so the data can not go to two places at once. How to fix? Need to use "tee" command )
 Piping Part 2
 -------------------------------
->date|tee fullday.txt|cut --delimiter=" " --field=1
->date|tee fullday.txt|cut --delimiter=" " --field=1 1>today.txt
->vmstat 1 3|tee vmstat.txt| cut --delimiter=" " --field=1,2 1>process.txt 
+> date|tee fullday.txt|cut --delimiter=" " --field=1
+> date|tee fullday.txt|cut --delimiter=" " --field=1 1>today.txt
+> vmstat 1 3|tee vmstat.txt| cut --delimiter=" " --field=1,2 1>process.txt 
  Key Point:
   1. Once you redirect the pipeline you can not continue
   2. If you want to continue the pipline use "tee" command
@@ -89,10 +89,10 @@ Part 3>>>>> Piping is all about connection the standard out of one command to st
             
 	    xargs - will conver the data from standard input into command line argument
 
->date |xargs echo
->date |xargs echo "hello"
->date |cut --delimiter=" " --field=1|xargs echo
->cat deletelist.txt |xargs rm
+> date |xargs echo
+> date |xargs echo "hello"
+> date |cut --delimiter=" " --field=1|xargs echo
+> cat deletelist.txt |xargs rm
 
 Aliases
 -----------------------------------
@@ -224,10 +224,10 @@ Deleting Files and Folders (Part 2)
 
 Copy and Past File
 ------------------------------------
->cp file1.txt file2.txt
->cp file1.txt file2.txt destination/
->cp destination/* .
->cp -r copymefolder/ destination (Copy and Past the folde to destination)
+> cp file1.txt file2.txt
+> cp file1.txt file2.txt destination/
+> cp destination/* .
+> cp -r copymefolder/ destination (Copy and Past the folde to destination)
 
 Moving and Renaming files and Directoties
 -----------------------------------------
@@ -263,6 +263,102 @@ search the below text using wheris option ^W
 
 remove the # symbole and remove the leading space and writeout/save the file
 set speller "aspell -x -c"
+
+The Locate Command - Part 1
+---------------------------------
+> locate *.conf
+> locate -i *.conf (search based on case insensetive search)
+> locate -i --limit 3 *.conf (limite the output to 3 results)
+> locate -i --limit 5 *.conf (limite the output to 5 results)
+> locate -i --limit 10 *.conf (limite the output to 10 results)
+> locate -S (To get the information about the database) 
+> locate -S > ~/Desktop/database_before.txt
+> locate -e *.conf (-e option will check the file is exist or not before reporting)
+> locate --existing *.conf (-e option will check the file is exist or not before reporting)
+> locate --follow *.conf
+> locate --existing --follow -i --limit 5 *.conf
+
+The Locate Command - Part 2 (Update DB)
+---------------------------------------
+> sudo updatedb
+> locate test.txt
+> locate -S >database_after.txt
+
+
+The Find Command part -1 
+-------------------------
+Difference between Locat and Find
+
+1. Find command list out the files and folders. But the list command only list the files
+2. Find command does not need the database to work. But the locat command the database and it should be always upto date 
+3. Find command not use the database and it operate directly on file system. So it will be bit slow compare to locate command
+3. Find command will search deeper and deper with infinite dept. It start with the current directory or whereever you give it
+
+
+> find (list every file and filder in our home directory and below it)
+> find / (Pls dont run it will slow your sysyem)
+> find /etc
+> find /home/ziyad/Documents
+> find /home/
+
+The Find Command part -2
+--------------------------
+
+1. How to control the search depth
+> find . -maxdepth 1
+> find . -maxdepth 2
+> find . -maxdepth 3
+> find . -maxdepth 4
+> find . -maxdepth 5
+
+By default find comand list both files and folder. if you only want the files use "-type f" option.if you only want the files use "-type d" option.
+> find . -type f
+> find . -type d
+> find . -maxdepth 1 -type d 
+> find . -maxdepth 2 -type d 
+> find . -maxdepth 3 -type d 
+> find . -maxdepth 4 -type d 
+> find . -maxdepth 5 -type d 
+
+> find . -maxdepth 1 -type f
+> find . -maxdepth 2 -type f 
+> find . -maxdepth 3 -type f 
+> find . -maxdepth 4 -type f 
+> find . -maxdepth 5 -type f
+
+> find /etc -maxdepth1 type f
+
+
+The Find Command part -3 (search file using name)
+--------------------------------------------------
+> find . -name "*5.txt"
+> find . -name "*.txt"
+> find . -maxdepth 2 -name "*.txt"
+  Note: You can not use brace {} expansion inside the name option. Just a side note
+> find . -maxdepth 2 -iname "*.TXT" (Case insensetive search)
+
+> find / -type f -size +100k
+> find / -type f -size -100k
+> find / -type f -size +100k |wc -l
+> find / -type f -size -100k |wc -l
+> find / -type f -size +100k -size -5M|wc -l
+> find / -type f -size -100k -o -size -5M|wc -l
+
+The Find Command part -4 (search file using name)
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
