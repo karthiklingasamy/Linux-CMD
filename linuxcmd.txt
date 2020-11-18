@@ -344,7 +344,24 @@ The Find Command part -3 (search file using name)
 > find / -type f -size +100k -size -5M|wc -l
 > find / -type f -size -100k -o -size -5M|wc -l
 
-The Find Command part -4 (search file using name)
+
+The Find Command Part -4 (use -exe and -ok option )
+-----------------------------------------------------
+> find / -type f -size +10k -size -500M  -exec cp {} ./copy_here \; (this command will copy the files to copy_here folders
+> find / -type f -maxdepth 4 -size +10k -size -500M  -exec cp {} ./copy_here \; (this command will copy the files to copy_here folders
+> find / -type f -maxdepth 4 -size +10k -size -500M  -ok cp {} ./copy_here \; (This ok option will ask confirmation for every file. press Yes or No. If you want to cancel press CTRL+C)
+
+The Find Command Part -5 (Find the needle from haystack)
+-------------------------------------------------------------
+> touch haystack/folder$(shuf -i 1-50 -n l)/needle.txt (This command is not working need to revisit)
+> find -type f -name "needle.txt"
+> find -type f -name "needle.txt" -exec mv WHAT WHERE
+> find haystack/ -type f -name "needle.txt" -exec mv {}  ./home/copy_here
+
+
+
+
+
 
 
  
