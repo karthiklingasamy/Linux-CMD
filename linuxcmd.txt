@@ -184,7 +184,7 @@ Creating Files and Directories Part 1
 > mkdir ~/Pictires/Holiday
 
 > mkdir -p bla/thing/shiblam (P option will create the entire path)
-> madir happy birthday (Dont use space in naming folder and file instead use "_" )
+> mkdir happy birthday (Dont use space in naming folder and file instead use "_" )
 
 Creating Files and Directories Part 2 (Power of braces {})
 --------------------------------------
@@ -292,10 +292,10 @@ Difference between Locat and Find
 1. Find command list out the files and folders. But the list command only list the files
 2. Find command does not need the database to work. But the locat command the database and it should be always upto date 
 3. Find command not use the database and it operate directly on file system. So it will be bit slow compare to locate command
-3. Find command will search deeper and deper with infinite dept. It start with the current directory or whereever you give it
+3. Find command will search deeper and deper with infinite dept. It start with the current directory or whereever you give it 
 
 
-> find (list every file and filder in our home directory and below it)
+> find (list every file and folder in our home directory and below it)
 > find / (Pls dont run it will slow your sysyem)
 > find /etc
 > find /home/ziyad/Documents
@@ -355,8 +355,8 @@ The Find Command Part -5 (Find the needle from haystack)
 -------------------------------------------------------------
 > touch haystack/folder$(shuf -i 1-50 -n l)/needle.txt (This command is not working need to revisit)
 > find -type f -name "needle.txt"
-> find -type f -name "needle.txt" -exec mv WHAT WHERE
-> find haystack/ -type f -name "needle.txt" -exec mv {}  ./home/copy_here
+> find -type f -name "needle.txt" -exec mv WHAT WHERE \;
+> find haystack/ -type f -name "needle.txt" -exec mv {}  ./home/copy_here \;
 
 
 
