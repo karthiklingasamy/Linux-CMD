@@ -1,4 +1,4 @@
-First Comman
+First Commans
 -------------------------------------
 > CTRL + T (To open Terminal)
 > echo shiva
