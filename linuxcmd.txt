@@ -358,6 +358,403 @@ The Find Command Part -5 (Find the needle from haystack)
 > find -type f -name "needle.txt" -exec mv WHAT WHERE \;
 > find haystack/ -type f -name "needle.txt" -exec mv {}  ./home/copy_here \;
 
+Viewing Files Part -1
+---------------------
+> cat file1.txt (To open a file1.txt and see what is inside)
+> cat file2.txt (To open a file2.txt and see what is inside)
+> cat file3.txt (To open a file3.txt and see what is inside)
+> cat file4.txt (To open a file4.txt and see what is inside)
+> cat file5.txt (To open a file5.txt and see what is inside)
+
+cat is used for files stick together or concat 
+
+> cat file1.txt file2.txt file3.txt file4.txt file5.txt
+> cat file1.txt file2.txt file3.txt file4.txt file5.txt >beautiful.txt
+> cat file[1-5].txt > beautiful.txt
+
+cat command is very useful when you work with multiple video and audio files. 
+It helps you to combine all the files into one long file
+
+tac command read the whole file in reverse. It read last line first and first line last. but
+it did not affect any text
+
+> echo "abc">>aplha.txt
+> echo "def">>alpha.txt
+> tac alpha.txt
+  def
+  abc
+
+> cat file[1-5].txt|tac
+> cat file[1-5].txt|tac >>alphareverse.txt
+> tac myfile.mp3 > myreversedfile.mp3
+
+
+rev command revers the each char of the line
+
+>cat file[1..5].txt |rev
+  olleh
+  ereht
+  uoy
+  lufituaeb
+  elopep
+> cat file[1-5].txt |tac |rev
+
+Viweing Files Part -2
+----------------------
+less command help to open large file with scrooling feature. Use UP and DOWN arrow to scrool
+> less /etc/cups/cups-browsed.conf
+This is very usefull 
+
+> cat /etc/cups/cups-browsed.conf | less
+> find -name "*.txt" |less
+> cat hello[1-5].txt |head (head command show first 10 lines by default)
+> cat hello[1-5].txt |head -n 2
+> cat hello[1-5].txt |head -n 2 |tac
+> cat hello[1-5].txt |head -n 2 >>temp.txt
+> cat /etc/cups/cups-browsed.conf |wc -l
+  673 lines
+
+> head -n 20 /etc/cups/cups-browsed.conf
+> head -n 20 /etc/cups/cups-browsed.conf |wc -l
+
+tail command works the same way how head but it works brom bottom
+
+> tail-n 20 /etc/cups/cups-browsed.conf
+> tail-n 20 /etc/cups/cups-browsed.conf |wc -l
+
+Fileter the line uing head and tail command. The below command will extract specific lines
+
+> head -n 20 /etc/cups/cups-browsed.conf|tail -n 1
+> head -n 20 /etc/cups/cups-browsed.conf|tail -n 3 (cut the 18 ,19 and 20 line)
+> find |tail -n 3
+> find |tail -n 3 > ~/home/Desktop/export.txt
+
+Sort with letters A-Z
+----------------------
+> cat 1>words.txt
+  c
+  b
+  a
+> sort words.txt
+  a
+  b
+  c
+> sort word.txt > output.txt
+> sort word.txt | tac (Method 1)
+  c
+  b
+  a
+> sort -r word.txt  (Method 2 is effective way)
+  c
+  b
+  a
+> sort word.txt |less
+
+Sort with numbers 0-9
+-----------------------
+> root@af0c34903159:/home/copy_here# cat file2.txt
+  9
+  8
+  7
+  6
+  5
+  4
+  3
+  2
+  1
+  10
+  01
+  999
+  1000
+> root@af0c34903159:/home/copy_here# sort file2.txt (Sort just by Digit)
+  01
+  1
+  10
+  1000
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  999
+> root@af0c34903159:/home/copy_here# sort -n file2.txt (Sort by the value)
+  01
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  10
+  999
+  1000
+> root@af0c34903159:/home/copy_here# sort -nr  file2.txt (Rever sort by value)
+  1000
+  999
+  10
+  9
+  8
+  7
+  6
+  5
+  4
+  3
+  2
+  1
+  01
+> root@af0c34903159:/home/copy_here# cat 1>number.txt
+	8
+	8
+	99
+	99
+	7
+	7
+	6
+	6
+	5
+	5
+	4
+	4
+	3
+	3
+	2
+	2
+	1
+	1
+	^C
+> root@af0c34903159:/home/copy_here# sort -u number.txt (get unique value)
+	1
+	2
+	3
+	4
+	5
+	6
+	7
+	8
+	99
+Sorting Part 2
+---------------
+root@af0c34903159:/# ls -l /etc |head -n 20
+total 272
+-rw-r--r-- 1 root root    3028 Oct  8 01:31 adduser.conf
+drwxr-xr-x 1 root root    4096 Nov 23 07:36 alternatives
+drwxr-xr-x 1 root root    4096 Oct  8 01:31 apt
+-rw-r--r-- 1 root root    2319 Feb 25  2020 bash.bashrc
+-rw-r--r-- 1 root root     367 Apr 14  2020 bindresvport.blacklist
+-rw-r--r-- 1 root root       0 Nov 10 08:48 cd
+drwxr-xr-x 2 root root    4096 Oct  8 01:31 cron.d
+drwxr-xr-x 1 root root    4096 Nov 16 02:05 cron.daily
+-rw-r--r-- 1 root root    2969 Aug  3  2019 debconf.conf
+-rw-r--r-- 1 root root      13 Dec  5  2019 debian_version
+drwxr-xr-x 2 root root    4096 Oct  8 01:34 default
+-rw-r--r-- 1 root root     604 Sep 15  2018 deluser.conf
+drwxr-xr-x 1 root root    4096 Oct  8 01:31 dpkg
+-rw-r--r-- 1 root root     685 Feb 14  2020 e2scrub.conf
+-rw-r--r-- 1 root root     106 Oct  8 01:34 environment
+-rw-r--r-- 1 root root      37 Oct  8 01:31 fstab
+-rw-r--r-- 1 root root    2584 Feb  1  2020 gai.conf
+-rw-r--r-- 1 root root     446 Oct  8 01:31 group
+-rw-r----- 1 root shadow   374 Oct  8 01:31 gshadow
+
+
+> root@af0c34903159:/# ls -l /etc |head -n 20 |sort -k 5n
+-rw-r--r-- 1 root root       0 Nov 10 08:48 cd
+total 272
+-rw-r--r-- 1 root root      13 Dec  5  2019 debian_version
+-rw-r--r-- 1 root root      37 Oct  8 01:31 fstab
+-rw-r--r-- 1 root root     106 Oct  8 01:34 environment
+-rw-r--r-- 1 root root     367 Apr 14  2020 bindresvport.blacklist
+-rw-r----- 1 root shadow   374 Oct  8 01:31 gshadow
+-rw-r--r-- 1 root root     446 Oct  8 01:31 group
+-rw-r--r-- 1 root root     604 Sep 15  2018 deluser.conf
+-rw-r--r-- 1 root root     685 Feb 14  2020 e2scrub.conf
+-rw-r--r-- 1 root root    2319 Feb 25  2020 bash.bashrc
+-rw-r--r-- 1 root root    2584 Feb  1  2020 gai.conf
+-rw-r--r-- 1 root root    2969 Aug  3  2019 debconf.conf
+-rw-r--r-- 1 root root    3028 Oct  8 01:31 adduser.conf
+drwxr-xr-x 1 root root    4096 Nov 16 02:05 cron.daily
+drwxr-xr-x 1 root root    4096 Nov 23 07:36 alternatives
+drwxr-xr-x 1 root root    4096 Oct  8 01:31 apt
+drwxr-xr-x 1 root root    4096 Oct  8 01:31 dpkg
+drwxr-xr-x 2 root root    4096 Oct  8 01:31 cron.d
+drwxr-xr-x 2 root root    4096 Oct  8 01:34 default
+
+> root@af0c34903159:/# ls -l /etc |head -n 20 |sort -k 5nr
+drwxr-xr-x 1 root root    4096 Nov 16 02:05 cron.daily
+drwxr-xr-x 1 root root    4096 Nov 23 07:36 alternatives
+drwxr-xr-x 1 root root    4096 Oct  8 01:31 apt
+drwxr-xr-x 1 root root    4096 Oct  8 01:31 dpkg
+drwxr-xr-x 2 root root    4096 Oct  8 01:31 cron.d
+drwxr-xr-x 2 root root    4096 Oct  8 01:34 default
+-rw-r--r-- 1 root root    3028 Oct  8 01:31 adduser.conf
+-rw-r--r-- 1 root root    2969 Aug  3  2019 debconf.conf
+-rw-r--r-- 1 root root    2584 Feb  1  2020 gai.conf
+-rw-r--r-- 1 root root    2319 Feb 25  2020 bash.bashrc
+-rw-r--r-- 1 root root     685 Feb 14  2020 e2scrub.conf
+-rw-r--r-- 1 root root     604 Sep 15  2018 deluser.conf
+-rw-r--r-- 1 root root     446 Oct  8 01:31 group
+-rw-r----- 1 root shadow   374 Oct  8 01:31 gshadow
+-rw-r--r-- 1 root root     367 Apr 14  2020 bindresvport.blacklist
+-rw-r--r-- 1 root root     106 Oct  8 01:34 environment
+-rw-r--r-- 1 root root      37 Oct  8 01:31 fstab
+-rw-r--r-- 1 root root      13 Dec  5  2019 debian_version
+-rw-r--r-- 1 root root       0 Nov 10 08:48 cd
+total 272
+
+> root@af0c34903159:/# ls -lh /etc |head -n 20 |sort -k 5nr (When we use h option n option will not work)
+-rw-r--r-- 1 root root    685 Feb 14  2020 e2scrub.conf
+-rw-r--r-- 1 root root    604 Sep 15  2018 deluser.conf
+-rw-r--r-- 1 root root    446 Oct  8 01:31 group
+-rw-r----- 1 root shadow  374 Oct  8 01:31 gshadow
+-rw-r--r-- 1 root root    367 Apr 14  2020 bindresvport.blacklist
+-rw-r--r-- 1 root root    106 Oct  8 01:34 environment
+-rw-r--r-- 1 root root     37 Oct  8 01:31 fstab
+-rw-r--r-- 1 root root     13 Dec  5  2019 debian_version
+drwxr-xr-x 1 root root   4.0K Nov 16 02:05 cron.daily
+drwxr-xr-x 1 root root   4.0K Nov 23 07:36 alternatives
+drwxr-xr-x 1 root root   4.0K Oct  8 01:31 apt
+drwxr-xr-x 1 root root   4.0K Oct  8 01:31 dpkg
+drwxr-xr-x 2 root root   4.0K Oct  8 01:31 cron.d
+drwxr-xr-x 2 root root   4.0K Oct  8 01:34 default
+-rw-r--r-- 1 root root   3.0K Oct  8 01:31 adduser.conf
+-rw-r--r-- 1 root root   2.9K Aug  3  2019 debconf.conf
+-rw-r--r-- 1 root root   2.6K Feb  1  2020 gai.conf
+-rw-r--r-- 1 root root   2.3K Feb 25  2020 bash.bashrc
+-rw-r--r-- 1 root root      0 Nov 10 08:48 cd
+total 272K
+
+> root@af0c34903159:/# ls -lh /etc |head -n 20 |sort -k 5hr (Use this methom when use h option in ls cmd. You can't use n and h option together like sort -k 5nhr)
+drwxr-xr-x 1 root root   4.0K Nov 16 02:05 cron.daily
+drwxr-xr-x 1 root root   4.0K Nov 23 07:36 alternatives
+drwxr-xr-x 1 root root   4.0K Oct  8 01:31 apt
+drwxr-xr-x 1 root root   4.0K Oct  8 01:31 dpkg
+drwxr-xr-x 2 root root   4.0K Oct  8 01:31 cron.d
+drwxr-xr-x 2 root root   4.0K Oct  8 01:34 default
+-rw-r--r-- 1 root root   3.0K Oct  8 01:31 adduser.conf
+-rw-r--r-- 1 root root   2.9K Aug  3  2019 debconf.conf
+-rw-r--r-- 1 root root   2.6K Feb  1  2020 gai.conf
+-rw-r--r-- 1 root root   2.3K Feb 25  2020 bash.bashrc
+-rw-r--r-- 1 root root    685 Feb 14  2020 e2scrub.conf
+-rw-r--r-- 1 root root    604 Sep 15  2018 deluser.conf
+-rw-r--r-- 1 root root    446 Oct  8 01:31 group
+-rw-r----- 1 root shadow  374 Oct  8 01:31 gshadow
+-rw-r--r-- 1 root root    367 Apr 14  2020 bindresvport.blacklist
+-rw-r--r-- 1 root root    106 Oct  8 01:34 environment
+-rw-r--r-- 1 root root     37 Oct  8 01:31 fstab
+-rw-r--r-- 1 root root     13 Dec  5  2019 debian_version
+-rw-r--r-- 1 root root      0 Nov 10 08:48 cd
+total 272K
+ 
+
+> root@af0c34903159:/# ls -lh /etc |head -n 20 |sort -k 6M (sort by month)
+total 272K
+-rw-r--r-- 1 root root    685 Feb 14  2020 e2scrub.conf
+-rw-r--r-- 1 root root   2.3K Feb 25  2020 bash.bashrc
+-rw-r--r-- 1 root root   2.6K Feb  1  2020 gai.conf
+-rw-r--r-- 1 root root    367 Apr 14  2020 bindresvport.blacklist
+-rw-r--r-- 1 root root   2.9K Aug  3  2019 debconf.conf
+-rw-r--r-- 1 root root    604 Sep 15  2018 deluser.conf
+-rw-r----- 1 root shadow  374 Oct  8 01:31 gshadow
+-rw-r--r-- 1 root root     37 Oct  8 01:31 fstab
+-rw-r--r-- 1 root root    106 Oct  8 01:34 environment
+-rw-r--r-- 1 root root    446 Oct  8 01:31 group
+-rw-r--r-- 1 root root   3.0K Oct  8 01:31 adduser.conf
+drwxr-xr-x 1 root root   4.0K Oct  8 01:31 apt
+drwxr-xr-x 1 root root   4.0K Oct  8 01:31 dpkg
+drwxr-xr-x 2 root root   4.0K Oct  8 01:31 cron.d
+drwxr-xr-x 2 root root   4.0K Oct  8 01:34 default
+-rw-r--r-- 1 root root      0 Nov 10 08:48 cd
+drwxr-xr-x 1 root root   4.0K Nov 16 02:05 cron.daily
+drwxr-xr-x 1 root root   4.0K Nov 23 07:36 alternatives
+-rw-r--r-- 1 root root     13 Dec  5  2019 debian_version
+
+> root@af0c34903159:/# ls -lh /etc |head -n 20 |sort -k 6Mr
+-rw-r--r-- 1 root root     13 Dec  5  2019 debian_version
+-rw-r--r-- 1 root root      0 Nov 10 08:48 cd
+drwxr-xr-x 1 root root   4.0K Nov 16 02:05 cron.daily
+drwxr-xr-x 1 root root   4.0K Nov 23 07:36 alternatives
+-rw-r----- 1 root shadow  374 Oct  8 01:31 gshadow
+-rw-r--r-- 1 root root     37 Oct  8 01:31 fstab
+-rw-r--r-- 1 root root    106 Oct  8 01:34 environment
+-rw-r--r-- 1 root root    446 Oct  8 01:31 group
+-rw-r--r-- 1 root root   3.0K Oct  8 01:31 adduser.conf
+drwxr-xr-x 1 root root   4.0K Oct  8 01:31 apt
+drwxr-xr-x 1 root root   4.0K Oct  8 01:31 dpkg
+drwxr-xr-x 2 root root   4.0K Oct  8 01:31 cron.d
+drwxr-xr-x 2 root root   4.0K Oct  8 01:34 default
+-rw-r--r-- 1 root root    604 Sep 15  2018 deluser.conf
+-rw-r--r-- 1 root root   2.9K Aug  3  2019 debconf.conf
+-rw-r--r-- 1 root root    367 Apr 14  2020 bindresvport.blacklist
+-rw-r--r-- 1 root root    685 Feb 14  2020 e2scrub.conf
+-rw-r--r-- 1 root root   2.3K Feb 25  2020 bash.bashrc
+-rw-r--r-- 1 root root   2.6K Feb  1  2020 gai.conf
+total 272K
+
+> root@af0c34903159:/# ls -lh /etc |head -n 20 |sort -k 2n
+-rw-r----- 1 root shadow  374 Oct  8 01:31 gshadow
+-rw-r--r-- 1 root root      0 Nov 10 08:48 cd
+-rw-r--r-- 1 root root     13 Dec  5  2019 debian_version
+-rw-r--r-- 1 root root     37 Oct  8 01:31 fstab
+-rw-r--r-- 1 root root    106 Oct  8 01:34 environment
+-rw-r--r-- 1 root root    367 Apr 14  2020 bindresvport.blacklist
+-rw-r--r-- 1 root root    446 Oct  8 01:31 group
+-rw-r--r-- 1 root root    604 Sep 15  2018 deluser.conf
+-rw-r--r-- 1 root root    685 Feb 14  2020 e2scrub.conf
+-rw-r--r-- 1 root root   2.3K Feb 25  2020 bash.bashrc
+-rw-r--r-- 1 root root   2.6K Feb  1  2020 gai.conf
+-rw-r--r-- 1 root root   2.9K Aug  3  2019 debconf.conf
+-rw-r--r-- 1 root root   3.0K Oct  8 01:31 adduser.conf
+drwxr-xr-x 1 root root   4.0K Nov 16 02:05 cron.daily
+drwxr-xr-x 1 root root   4.0K Nov 23 07:36 alternatives
+drwxr-xr-x 1 root root   4.0K Oct  8 01:31 apt
+drwxr-xr-x 1 root root   4.0K Oct  8 01:31 dpkg
+drwxr-xr-x 2 root root   4.0K Oct  8 01:31 cron.d
+drwxr-xr-x 2 root root   4.0K Oct  8 01:34 default
+total 272K
+
+> root@af0c34903159:/# ls -lh /etc |head -n 20 |sort -k 2nr
+total 272K
+drwxr-xr-x 2 root root   4.0K Oct  8 01:31 cron.d
+drwxr-xr-x 2 root root   4.0K Oct  8 01:34 default
+-rw-r----- 1 root shadow  374 Oct  8 01:31 gshadow
+-rw-r--r-- 1 root root      0 Nov 10 08:48 cd
+-rw-r--r-- 1 root root     13 Dec  5  2019 debian_version
+-rw-r--r-- 1 root root     37 Oct  8 01:31 fstab
+-rw-r--r-- 1 root root    106 Oct  8 01:34 environment
+-rw-r--r-- 1 root root    367 Apr 14  2020 bindresvport.blacklist
+-rw-r--r-- 1 root root    446 Oct  8 01:31 group
+-rw-r--r-- 1 root root    604 Sep 15  2018 deluser.conf
+-rw-r--r-- 1 root root    685 Feb 14  2020 e2scrub.conf
+-rw-r--r-- 1 root root   2.3K Feb 25  2020 bash.bashrc
+-rw-r--r-- 1 root root   2.6K Feb  1  2020 gai.conf
+-rw-r--r-- 1 root root   2.9K Aug  3  2019 debconf.conf
+-rw-r--r-- 1 root root   3.0K Oct  8 01:31 adduser.conf
+drwxr-xr-x 1 root root   4.0K Nov 16 02:05 cron.daily
+drwxr-xr-x 1 root root   4.0K Nov 23 07:36 alternatives
+drwxr-xr-x 1 root root   4.0K Oct  8 01:31 apt
+drwxr-xr-x 1 root root   4.0K Oct  8 01:31 dpkg
+
+
+
+
+
+  
+
+
+
+
+
+ 
+
+
+
+
 
 
 
