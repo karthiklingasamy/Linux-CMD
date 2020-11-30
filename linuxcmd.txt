@@ -172,6 +172,7 @@ Wildcards
 > ls file[0-9][A-z][a-z].txt
 > ls file[0-9ABC].txt
 > ls file[0-9abc].txt
+> ls | less -N
 
 Creating Files and Directories Part 1
 --------------------------------------
@@ -837,6 +838,41 @@ Extract in one go
 
 > tar -xvzf ourarchive.tar.gz
 > tar -xvjf ourarchive.tar.gz.bz2
+
+
+GNU
+-----
+1. 1991 - GNU Almost completed. Except only piece is missing called kernal
+2. Kernal is a interface layer is responsible for allocating resource on the computer Hardawre that is required by the Software that is running.
+
+> uname
+> uname -o
+> uname -m(to see its 32 bit or 64 bit)
+  x86_64
+> lsb_release -a
+> apt (Its a package manager used in ubuntu. 
+  a- Advanced
+  p- Package
+  t- tool
+search packages from repo
+-------------------------------
+> apt-cache search docx
+> apt-cache search docx | grep text
+> apt-cache search jmeter
+
+> apt-cache show doxc2txt |less
+> apt-cache search "web serve"|less
+> cd /var/lib/apt/lists (to see the cache)
+> ls | less -N
+
+
+
+
+
+
+
+
+
 
 
 
