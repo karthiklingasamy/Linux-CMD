@@ -113,7 +113,7 @@ Navigating File System part 1
 
 > ls /home/karthik
 > ls ~
-> ks -F (different between files and folder/ )
+> ls -F (different between files and folder/ )
 > ls -F>list.txt
 > ls -l (long form format)
 > ls -lh (human readable form about file size)
@@ -422,7 +422,7 @@ tail command works the same way how head but it works brom bottom
 > tail-n 20 /etc/cups/cups-browsed.conf
 > tail-n 20 /etc/cups/cups-browsed.conf |wc -l
 
-Fileter the line uing head and tail command. The below command will extract specific lines
+Fileter the line using head and tail command. The below command will extract specific lines
 
 > head -n 20 /etc/cups/cups-browsed.conf|tail -n 1
 > head -n 20 /etc/cups/cups-browsed.conf|tail -n 3 (cut the 18 ,19 and 20 line)
@@ -629,7 +629,7 @@ drwxr-xr-x 2 root root   4.0K Oct  8 01:34 default
 -rw-r--r-- 1 root root      0 Nov 10 08:48 cd
 total 272K
 
-> root@af0c34903159:/# ls -lh /etc |head -n 20 |sort -k 5hr (Use this methom when use h option in ls cmd. You can't use n and h option together like sort -k 5nhr)
+> root@af0c34903159:/# ls -lh /etc |head -n 20 |sort -k 5hr (Use this method when use h option in ls cmd. You can't use n and h option together like sort -k 5nhr)
 drwxr-xr-x 1 root root   4.0K Nov 16 02:05 cron.daily
 drwxr-xr-x 1 root root   4.0K Nov 23 07:36 alternatives
 drwxr-xr-x 1 root root   4.0K Oct  8 01:31 apt
@@ -739,6 +739,137 @@ drwxr-xr-x 1 root root   4.0K Nov 16 02:05 cron.daily
 drwxr-xr-x 1 root root   4.0K Nov 23 07:36 alternatives
 drwxr-xr-x 1 root root   4.0K Oct  8 01:31 apt
 drwxr-xr-x 1 root root   4.0K Oct  8 01:31 dpkg
+
+grep part -1
+-------------
+gadsby poem not wantains letter e example
+> grep "Txn01_Login" in result.txt (e is the search value not an option. It will highlight the line containes e)
+> grap -c "Txn01_Login" result.txt ( It will print how many lines contains Txn01_Login)
+> wc -l gadsby.txt 
+  1914 (It contails 1914 lines)
+> grep -i "txn01_login" in result.txt (ignore case sensitibe)
+> grep -ic "txn01_login" in result.txt (ignore case sensitibe and print how many lines contain the search text)
+> grep -ic e gadsby_manuscript.txt
+  0
+> grep -ic "our boys" gadsby_manscript.txt
+  9 (9 lines contains the text our boys)
+
+> grep -i "our boys" gadsby_manscript.txt
+  Note: It shows shows all the 9 lines
+
+Note: If you want to search with single char no need to use double quotes
+
+grep using v option. It inver the search (!=)
+----------------------------------------------
+> grep -v e gadsby_manuscript.txt (search all the lines that dont have the letter e)
+
+
+grep part -2
+-------------
+
+To be updated skiping this section and going to file Arichiving
+
+File Archiving + Compression
+------------------------------
+1. Tarball is way of butting you files in a bag. When you put file into tarball means you are putting all you files in one place
+2. Tarball itself does't do any compression. But we can compress tarball using compression algotithem
+
+2 Step Peoce4ss
+------------------
+1. Make tarball
+2. compress tarball
+
+Create tarball
+--------------
+> tar -cvf ourarchive.tar file[1-3].txt
+  c option means create
+  v option means verbose talk to me . dont do silently
+  
+> ls -l |grep .tar
+  Note: The size of the tarball is 20K. However each individua file size is 5k (3 files =15k). Means the tarball has its own weight/size.
+        Once we compress the tarball the individual size of the file will go down.
+> file ourarchive.tar
+  ourarchive.tar: POSIX tar archive (GNU)
+
+> tar -tf ourarchive.tar (To see what is inside tarball)
+   t option is test what is inside
+   f option is necessery to pass the file to tar
+
+> tar -xvf ourarchive.tar (To extract tar)
+   x option  means extract
+   v option means verbose. Means just talk to me don't do silently
+   f option necessary bcz passing files
+
+Compression Algorithm
+------------------------
+1. gzip - Faster & less compression power
+2. bzip2 - slow & High comprssion power (If you see the real power only the file size is too big)
+
+gzip
+-------------------------------------
+> gzip ourarchive.tar
+> ls -lh (to see the size)
+
+How to get the tar ball back
+> gunzip ourarchive.tar.gz
+> file ourarchive.tar
+
+bzip
+---------------------------------
+> bzip2 ourarchive.tar
+> ls -lh (to see the size)
+
+How to get the tar ball back
+> bunzip2 ourarchive.tar.bz2
+> ls -lh
+
+Zipfiles (Win and Mac)
+---------
+> zip ourthing.zip file1.txt file2.txt file3.txt
+
+compress and archive in one go
+---------------------------------
+> tar -cvzf ourarchive.tar.gz file1.txt file2.txt file3.txt
+> tar -cvjf ourarchive.tar.gz.bz2 file1.txt file2.txt file3.txt
+
+Extract in one go
+-----------------------
+
+> tar -xvzf ourarchive.tar.gz
+> tar -xvjf ourarchive.tar.gz.bz2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
