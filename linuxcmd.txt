@@ -205,6 +205,7 @@ Creating Files and Directories Part 2 (Power of braces {})
 
 Deleting Files and Folders (Part 1)
 -----------------------------------
+
 > rm deleteme
 > rm Documents/deleteme
 > rm file1.txt Document/file2.txt /Download/file3.txt
@@ -864,6 +865,149 @@ search packages from repo
 > apt-cache search "web serve"|less
 > cd /var/lib/apt/lists (to see the cache)
 > ls | less -N
+
+> sudo apt-get updated (Update the cache list from the internet)
+> sudo apt-get upgrade (to update the every single piece of software to the latest version)
+
+
+Shell Script Basic
+--------------------------
+> which bash
+
+#ECHO
+------------------------
+echo Hello World!
+
+#VARIABLES
+-----------------------
+#Uppercaseby convention
+# Letters,numbers,underscores
+
+NAME="Brad"
+echo "My name is $NAME"
+echo "My name is ${NAME}"
+
+# USER INPUT
+----------------------
+read -p "Enter your name: NAME
+echo "Hello $NAME, nice to meet you
+
+# SIMPLE IF STATEMENT
+--------------------
+
+NEME="Brad"
+
+if ["$NAME" == "Brad" ]
+then
+ echo "your name is Brad"
+fi
+
+
+
+# IF-ELSE
+--------------
+
+NEME="Jack"
+
+if ["$NAME" == "Brad" ]
+then
+ echo "your name is Brad"
+else
+ echo "Your name is Not Brad"
+fi
+
+# ELSE-IF(elif)
+-----------------
+
+NEME="Jack"
+
+if [ "$NAME" == "Brad" ]
+then
+ echo "your name is Brad"
+elif [ "$NAME=="Jack" ]
+then
+ echo "You name is Jack"
+else
+ echo "Your name is Not Brad or Jack"
+fi
+
+# COMPARISION
+---------------
+# val1 -eq val2 Return true if the values are equal
+# val1 -ne val2 Return true if the values are not equal
+# val1 -gr val2 Return true if val1 is greater than val2
+# val1 -ge val2 Return true if the val1 is greater than or equal to val2
+# val1 -lt val2 Return true if val1 is less than val2
+# val1 -le val2 Return true if val1 is less than or equal to val2
+
+NUM1=3
+NUM2=5
+
+if [ "$NUM1 -gr "$NUM2" ]
+then
+ echo "$NUM1 is greater than $NUM2"
+else
+ echo "$NUM1 is less than $NUM2"
+fi
+
+# FILE CONDITIONS
+----------------------
+FILE="test.txt"
+if [ -f "$FILE" ]
+then
+ echo "$FILE is a file"
+else
+ echo "$FILE is nOT a file"
+fi
+
+# -d file True if file is a directory
+# -e file True if the file exists (note that this is not particularly portable. thus -f is generally used)
+# -f file True if the provided string is a file
+# -g file True if the group id set ona file
+# -r file True if the file is readable
+# -s file True if the file has a non-zero size
+# -u True if the user id is set on a file
+# -w True if the file is writable
+# -x True if the file is an executable
+
+# CASE STATEMENTS
+---------------------
+read -p "Are you 21 or Over ? Y/N" ANSWER
+case "$ANSWER" in
+ [yY] | [yY][eE][sS])
+ echo "You can have a bee :)"
+ ;;
+ [nN] | [nN] [oO] )
+ echo "Sorry , no drinking"
+ ;;
+ *)
+ echo "Please enter y/Yes or n/No"
+ ;;
+esac
+
+# SIMPLE FOR LOOP
+-------------------
+NAMES="Brad Kevin Alice Mark"
+for NAME in $NAMES
+ do 
+   echo "Hello $NAME"
+ done
+
+
+# FOR LOOP TO RENAME FILES
+------------------------------
+FILES
+
+
+
+
+
+
+
+
+
+
+
 
 
 
